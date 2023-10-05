@@ -8,9 +8,37 @@ jobs:
     name: "Get weather"
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          # Checkout with full commit history
+          fetch-depth: 0
       - name: Install curl
         run: sudo apt install curl
       - name: Call curl
-        run: curl -o output.txt --location 'https://api.openweathermap.org/data/2.5/weather?lat=47.6740&lon=122.1215&units=imperial&appid=${{ secrets.WEATHER }}'
+        run: curl -o weather.txt --location 'https://api.openweathermap.org/data/2.5/weather?lat=47.6740&lon=122.1215&units=imperial&appid=${{ secrets.WEATHER }}'
       - name: Display contents of file
         run: cat output.txt
+      - name: Commit changes
+        uses: EndBug/add-and-commit@v7
+        with:
+          author_name: "GitHub Actions"
+          author_email: ${{ secrets.EMAIL }}
+          message: "Updating weather."
+          # Set the files to commit - replace this with your own file paths
+          add: "weather.txt"
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          branch: daily-contribution
+          # Set the Git credentials - replace this with your own secrets
+          github_token: ${{ secrets.USERNAME }}
+      - name: Open pull request
+        uses: peter-evans/create-pull-request@v3
+        with:
+          title: "Weather"
+          commit-message: "Updating weather"
+          branch: daily-contribution
+          base: main
+          body: "This pull request was created automatically by a GitHub Actions workflow that updates the daily weather in Redmond."
+          token: ${{ secrets.USERNAME }}
