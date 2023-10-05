@@ -22,7 +22,7 @@ jobs:
       - name: Commit changes
         uses: EndBug/add-and-commit@v7
         with:
-          author_name: "GitHub Actions"
+          author_name: ${{ secrets.NAME }}
           author_email: ${{ secrets.EMAIL }}
           message: "Updating weather."
           # Set the files to commit - replace this with your own file paths
@@ -32,7 +32,7 @@ jobs:
         with:
           branch: daily-contribution
           # Set the Git credentials - replace this with your own secrets
-          github_token: ${{ secrets.USERNAME }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
       - name: Open pull request
         uses: peter-evans/create-pull-request@v3
         with:
