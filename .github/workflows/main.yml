@@ -11,6 +11,6 @@ jobs:
       - name: Install curl
         run: sudo apt install curl
       - name: Call curl
-        run: curl -o output.txt --location 'https://api.openweathermap.org/data/2.5/weather?lat=47.67&lon=122.12&units=imperial&appid=a8f4f8f47ac6126830d4246039ed3c64'
+        run: curl -o output.txt --location 'https://api.openweathermap.org/data/2.5/weather?lat=47.6740&lon=122.1215&units=imperial&appid=a8f4f8f47ac6126830d4246039ed3c64'
       - name: Display contents of file
         run: cat output.txt
