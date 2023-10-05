@@ -41,4 +41,4 @@ jobs:
           branch: daily-contribution
           base: main
           body: "This pull request was created automatically by a GitHub Actions workflow that updates the daily weather in Redmond."
-          token: ${{ secrets.USERNAME }}
+          token: ${{ secrets.GITHUB_TOKEN }}
