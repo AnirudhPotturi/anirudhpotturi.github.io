@@ -30,7 +30,7 @@ jobs:
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
-          branch: daily-contribution
+          branch: weather
           # Set the Git credentials - replace this with your own secrets
           github_token: ${{ secrets.GITHUB_TOKEN }}
       - name: Open pull request
@@ -38,7 +38,7 @@ jobs:
         with:
           title: "Weather"
           commit-message: "Updating weather"
-          branch: daily-contribution
+          branch: weather
           base: main
           body: "This pull request was created automatically by a GitHub Actions workflow that updates the daily weather in Redmond."
           token: ${{ secrets.GITHUB_TOKEN }}
