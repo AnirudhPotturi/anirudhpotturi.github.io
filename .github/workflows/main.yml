@@ -19,6 +19,7 @@ jobs:
         run: curl -o weather.txt --location 'https://api.openweathermap.org/data/2.5/weather?lat=47.6740&lon=122.1215&units=imperial&appid=${{ secrets.WEATHER }}'
       - name: Display contents of file
         run: cat weather.txt
+             git pull
       - name: Commit changes
         uses: EndBug/add-and-commit@v7
         with:
