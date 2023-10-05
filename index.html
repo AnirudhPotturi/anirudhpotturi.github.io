@@ -78,6 +78,63 @@
 					<div id="main">
 
 						<article class="post featured">
+
+							<header class="major">
+								<span class="date"></span>
+								<h2><a href="">Weather in Redmond using OpenWeatherAPI</a></h2>
+							</header>
+							<pre id="json-data"></pre>
+
+							Temperature: <span id="temperature"></span>°F
+							Feels Like: <span id="feels-like"></span>°F
+							Humidity: <span id="humidity"></span>%
+							on <span id="todaysDate"></span>
+
+							<script>
+								// JavaScript code to fetch and display temperature, feels like temperature, and humidity
+								fetch('weather.txt') // Replace 'data.txt' with the path to your text file
+										.then(response => response.text())
+										.then(data => {
+											try {
+												const jsonData = JSON.parse(data);
+												const temperature = jsonData.main.temp;
+												const feelsLike = jsonData.main.feels_like;
+												const humidity = jsonData.main.humidity;
+
+												document.getElementById('temperature').textContent = temperature.toFixed(2);
+												document.getElementById('feels-like').textContent = feelsLike.toFixed(2);
+												document.getElementById('humidity').textContent = humidity.toFixed(2);
+											} catch (error) {
+												console.error('Error parsing JSON:', error);
+											}
+										})
+										.catch(error => {
+											console.error('Error fetching data:', error);
+										});
+								const currentDate = new Date();
+								const day = currentDate.getDate();
+								const month = currentDate.toLocaleString('default', { month: 'long' }); // Get month name
+								const year = currentDate.getFullYear();
+
+								const dateMonthYearString = `${month} ${day}, ${year}`;
+								document.querySelector('.date').textContent = dateMonthYearString;
+								document.getElementById('todaysDate').textContent = dateMonthYearString;
+							</script>
+
+
+
+							<p>
+								</br>
+								I setup a Github actions workflow that calls the OpenWeatherAPI everyday as an automated task. The task script runs on an ubuntu machine utilizing a cURL command. The response from the cURL command is saved into text file which is then committed and pushed into the repository. The workflow setup to build and deploy this webpage is responsible for making sure the website is updated.
+								This website is embedded with a script which pulls the data from the text file and parses it into JSON objects. From this, we extract temperature and humidity and display it on the webpage.
+								Posted on October 5, 2023
+							</p>
+
+						</article>
+
+
+
+						<article class="post featured">
 							<header class="major">
 								<span class="date">October 1, 2023</span>
 								<h2><a href="https://github.com/AnirudhPotturi/YouTubeVideoDownloader">Video downloader for YouTube</a></h2>
