@@ -1,10 +1,10 @@
-name: "Workflow example"
+name: "Weather"
 on:
   schedule:
     - cron: '0 10 * * *'
 
 jobs:
-  hello:
+  weather:
     name: "Get weather"
     runs-on: ubuntu-latest
     steps:
