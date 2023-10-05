@@ -22,8 +22,8 @@ jobs:
       - name: Commit changes
         uses: EndBug/add-and-commit@v7
         with:
-          author_name: ${{ secrets.NAME }}
-          author_email: ${{ secrets.EMAIL }}
+          author_name: "${{ secrets.NAME }}"
+          author_email: "${{ secrets.EMAIL }}"
           message: "Updating weather."
           # Set the files to commit - replace this with your own file paths
           add: "weather.txt"
