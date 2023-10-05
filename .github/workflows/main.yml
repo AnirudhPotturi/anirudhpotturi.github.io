@@ -10,4 +10,4 @@ jobs:
     steps:
       - name: Display message
         run: sudo apt install curl
-        curl -o output.txt https://api.openweathermap.org/data/3.0/onecall?lat=33.44&lon=-94.04&appid=${{ secrets.WEATHER }}
+        curl -o output.txt https://api.openweathermap.org/data/3.0/onecall?lat=33.44&lon=-94.04&appid=a8f4f8f47ac6126830d4246039ed3c64
