@@ -1,10 +1,10 @@
-name: "Workflow example"
+name: "Weather"
 on:
   schedule:
     - cron: '0 10 * * *'
 
 jobs:
-  hello:
+  Weather:
     name: "Get weather"
     runs-on: ubuntu-latest
     steps:
@@ -39,6 +39,6 @@ jobs:
           title: "Weather"
           commit-message: "Updating weather"
           branch: weather
-          base: main
+          base: weather_pr_only
           body: "This pull request was created automatically by a GitHub Actions workflow that updates the daily weather in Redmond."
           token: ${{ secrets.GITHUB_TOKEN }}
