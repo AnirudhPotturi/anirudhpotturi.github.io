@@ -1,10 +1,10 @@
-name: "Weather"
+name: "Workflow example"
 on:
   schedule:
-    - cron: '0 9,21 * * *'
+    - cron: '0 10 * * *'
 
 jobs:
-  weather:
+  hello:
     name: "Get weather"
     runs-on: ubuntu-latest
     steps:
@@ -19,8 +19,6 @@ jobs:
         run: curl -o weather.txt --location 'https://api.openweathermap.org/data/2.5/weather?lat=47.6740&lon=122.1215&units=imperial&appid=${{ secrets.WEATHER }}'
       - name: Display contents of file
         run: cat weather.txt
-      - name: Pull git repo contents
-        run: git pull
       - name: Commit changes
         uses: EndBug/add-and-commit@v7
         with:
