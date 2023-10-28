@@ -404,6 +404,12 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+			<script>
+				// Access the environment variable from the inline script
+				var envVariable = "<%= process.env.ANI %>";
 
+				// Use the variable in your JavaScript code
+				document.getElementById("ANI").textContent = envVariable;
+			</script>
 	</body>
 </html>
