@@ -1,0 +1,225 @@
+<!DOCTYPE HTML>
+<!--
+	Striped by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+<head>
+    <title>Anirudh Potturi's Portfolio + Blog</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+</head>
+<body class="is-preload">
+
+
+<!-- Content -->
+<div id="content">
+    <div class="inner">
+
+<!--        &lt;!&ndash; Post &ndash;&gt;-->
+<!--        <article class="box post post-excerpt">-->
+<!--            <header>-->
+<!--                <h2><a>Building a NAS with a ZimaBoard? Like a ZimaNAS?</a></h2>-->
+<!--                <p>ZimaBoard, a micro home server</p>-->
+<!--            </header>-->
+
+<!--            <div class="info">-->
+<!--                <span class="date"><span class="month">Feb</span> <span class="day">7</span><span class="year">2023</span></span>-->
+<!--            </div>-->
+
+<!--            <a class="image featured"><img src="images/projects/zimaboard.jpg" alt="" /></a>-->
+
+<!--            <p>-->
+<!--                So I've played around with an old PC that was salvaged and turned into a Network Attached Storage Machine (a NAS). It did the job but was running on some pretty old hardware. It was time to upgrade to something maybe slightly more powerful and most importantly, energy efficient.-->
+<!--            </p>-->
+<!--            <p>-->
+<!--                The ZimaBoard 832 is equipped with an Intel Celeron N3450 processor with a quad core.It comes with 8 Gb RAM and 32 Gb Internal Storage. This should be sufficient to run a lightweight Operating System. The zimaboard is pre-installed with CasaOS, an open-source OS perfect for Home Cloud Applications.-->
+<!--            </p>-->
+<!--            <p>-->
+<!--                After playing around with this device, it was time to start experimenting the features and prepare it to be converted into a NAS. The first thing we did was installing Windows 10 Entrprise LTSC. This is a stripped down version of Windows 10. It does not have bloatware or applications that may change over time. In essence, this OS provides features and functionality that are not meant to change over time.-->
+<!--                Next, to make sure this system is fault-tolerant in case of a drive failure, we mirrored the OS on two seperate SSDs. The instructions to successfully mirror the OS lacked some details and took sometime to figure out. It was not straight forward doing this because the Disk Management application produces errors that are not very helpful.-->
+<!--                After quite some tinkering, replacing drives, and fresh installs, I realised that the Recovery partition on the Primary OS drive needs to be deleted. I am not exactly sure why we need to do this but I will be back with an update. I was finally able to mirror after doing so and voila! The OS is mirrored and we're a step closer to building the NAS.-->
+<!--            </p>-->
+<!--            <p>-->
+<!--                The goal of this project is simple. We want to migrate everything on the old TrueNAS machine onto this tiny computer. This will be home to a Plex server with a library of movies, videos, and more.-->
+<!--            </p>-->
+
+<!--        </article>-->
+
+
+        <!-- Post -->
+        <article class="box post post-excerpt">
+            <header class="major">
+                <h2><a href="#">Collection of Commands</a></h2>
+            </header>
+            <h3 align="center">-----Linux-----</h3>
+            <p>
+                <strong>kf -kh .</strong>                      - Displays information about total space and available space on a file system. Flag -k displays statistics in units of 1024-byte blocks.<br>
+                <strong>ps -p YourProcessID -o lstart=</strong>      - See when a process started running. Another option (<strong>ps -f |grep pid</strong>)<br>
+                <strong>ps aux | grep yourUserName</strong>		   - List all processes currently running that are associated with a user.<br>
+                <strong>date</strong>				           - Get current date and time. <br>
+                <strong>kill -QUIT YourProcessID</strong>	               - Kill process and get the thread dump.<br>
+                <strong>rmdir directoryName </strong>             - Remove empty directory<br>
+                <strong>rm -r directoryName</strong>		      - Remove directory and all it's contents<br>
+                <strong>ps -o thcount YourProcessID</strong>		      - To get the number of threads for a given pid.<br>
+                <strong>cd - or cd ..</strong>		      -  Go back one directory. <br>
+                <strong>cd ~</strong>		      -  Go to home directory. <br>
+                <strong>clear or ctrl + l</strong>		      -  Clear the screen.<br>
+                <strong>history</strong>		      -  History of commands used.<br>
+                <strong>reset</strong>		      -  Resets the shell.<br>
+                <strong>ctrl + u</strong>		      -  Delete a line typed into the shell.<br>
+                <strong>ctrl + a</strong>		      -  Go to start of line.<br>
+                <strong>ctrl + e</strong>		      -  Go to end of line.<br>
+                <strong>command1;command2</strong>		      -  Run multiple commands - Chaining commands. Better than 'command1 && command2' (failure of command 1 here will not execute command 2)<br>
+                <strong>someRandomCommand | column -t</strong>		      -  Produce the output in the form of a table if supported.<br>
+                <!--<strong> </strong>		      -  Content <br>
+                <strong> </strong>		      -  Content <br>
+                <strong> </strong>		      -  Content <br>
+                <strong> </strong>		      -  Content <br>
+                <strong> </strong>		      -  Content <br>-->
+            <h4 align="center">-----htop: An interactive process viewer for Linux-----</h4>
+            <div class="htop">
+                <strong>Setup process:</strong>
+                <ol class="htoplist">
+                    <li>Start htop using the following command- htop.</li>
+                    <li>Enter setup menu by pressing F2.</li>
+                    <li>From leftmost column choose "Columns".</li>
+                    <li>From rightmost column choose the column to be added to main monitoring output. NLWP is for Number of light weight processes using threads.</li>
+                    <li>Press F10 to finish setup.</li>
+                </ol>
+                Source - Stackoverflow.
+            </div>
+            </p>
+
+            <h3 align="center">-----Git-----</h3>
+            <p>
+                <strong>git checkout -b branchName</strong>   - Create new branch and switch to it<br>
+                <strong>git checkout branchName</strong>      - Switch to an existing branch.<br>
+                <strong>git log </strong>		              - Log info on commits.<br>
+                <strong>git checkout SHA</strong>	          - Checkout a specific commit. SHA can be acquired through git log. <br>
+            </p>
+
+            <h3 align="center">-----JVM Options-----</h3>
+            <p>
+                <strong>-XX:CompileCommand="exclude,java/lang/Object.wait" </strong> 			- To prevent Object.wait from being JIT-compiled (and thus making wait info always available) <br>
+                <strong>-Xmx_g</strong>					                                        - Selects the maximum memory sizes available to the JVM. These values are used for the JVM heap, which reserves memory. Something like <strong>-Xmx16g [Remember to replace the _]</strong><br>
+                <strong>-d64</strong>									                        - For 64-bit machines only. This options should be specified when a large JVM heap is required (greater than 4 Gbytes) and the architecture is 64-bit.<br>
+                <strong>-XX:NewSize=512M</strong>							                    - In heavy throughput environments, you should consider using this option to increase the size of the JVM young generation. By default, the young generation is quite small, and high throughput scenarios can result in a large amount of generated garbage. This garbage collection, in turn, causes the JVM to inadvertently promote short-lived objects into the old generation.<br>
+            </p>
+
+            <h4 align="center">-----Other helpful Linux commands-----</h4>
+            <a class="image fit"><img src="images/workstuff/BasicLinuxCommands.jpeg" alt="" /></a>
+            <!--<ul class="actions special">
+                <li><a href="#" class="button large">Full Story</a></li>
+            </ul>-->
+        </article>
+
+
+
+
+        <!-- Pagination -->
+<!--        <div class="pagination">-->
+<!--            &lt;!&ndash;<a href="#" class="button previous">Previous Page</a>&ndash;&gt;-->
+<!--            <div class="pages">-->
+<!--                <a href="#" class="active">1</a>-->
+<!--                <a href="#">2</a>-->
+<!--                <a href="#">3</a>-->
+<!--                <a href="#">4</a>-->
+<!--                <span>&hellip;</span>-->
+<!--                <a href="#">20</a>-->
+<!--            </div>-->
+<!--            <a href="#" class="button next">Next Page</a>-->
+<!--        </div>-->
+
+    </div>
+</div>
+
+<!-- Sidebar -->
+<div id="sidebar">
+
+    <!-- Logo -->
+    <h1 id="logo"><a href="#">ANI</a></h1>
+
+    <!-- Nav -->
+    <nav id="nav">
+        <ul>
+            <li><a href="index.html">About me</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li class="current"><a href="workstuff.html">Work Stuff</a></li>
+            <li><a href="hobbies.html">Hobbies</a></li>
+        </ul>
+        <br>
+        Socials
+        <ul class="icons">
+            <!--
+            <li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+            <li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+            <li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+            -->
+            <li><a href="https://github.com/AnirudhPotturi" target="_blank" class="icon brands fa-github">&nbsp;&nbsp;&nbsp;GitHub</a></li>
+            <li><a href="https://www.linkedin.com/in/anirudh-/" target="_blank" class="icon brands fa-linkedin">&nbsp;&nbsp;&nbsp;LinkedIn</a></li>
+        </ul>
+    </nav>
+
+    <!-- Search -->
+<!--    <section class="box search">-->
+<!--        <form method="post" action="#">-->
+<!--            <input type="text" class="text" name="search" placeholder="Search" />-->
+<!--        </form>-->
+<!--    </section>-->
+
+    <!-- Text -->
+    <section class="box text-style1">
+        <div class="inner">
+            <p>
+                Today is the oldest you have ever been and the youngest you'll ever be again.
+            </p>
+        </div>
+    </section>
+
+<!--    &lt;!&ndash; Recent Posts &ndash;&gt;-->
+<!--    <section class="box recent-posts">-->
+<!--        <header>-->
+<!--            <h2>Recent Posts</h2>-->
+<!--        </header>-->
+<!--        <ul>-->
+<!--            <li><a href="#">Lorem ipsum dolor</a></li>-->
+<!--            <li><a href="#">Feugiat nisl aliquam</a></li>-->
+<!--            <li><a href="#">Sed dolore magna</a></li>-->
+<!--            <li><a href="#">Malesuada commodo</a></li>-->
+<!--            <li><a href="#">Ipsum metus nullam</a></li>-->
+<!--        </ul>-->
+<!--    </section>-->
+
+<!--    &lt;!&ndash; Recent Comments &ndash;&gt;-->
+<!--    <section class="box recent-comments">-->
+<!--        <header>-->
+<!--            <h2>Recent Comments</h2>-->
+<!--        </header>-->
+<!--        <ul>-->
+<!--            <li>case on <a href="#">Lorem ipsum dolor</a></li>-->
+<!--            <li>molly on <a href="#">Sed dolore magna</a></li>-->
+<!--            <li>case on <a href="#">Sed dolore magna</a></li>-->
+<!--        </ul>-->
+<!--    </section>-->
+
+
+    <!-- Copyright -->
+    <ul id="copyright">
+        <li>&copy; Anirudh Potturi<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+    </ul>
+
+</div>
+
+<!-- Scripts -->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/browser.min.js"></script>
+<script src="assets/js/breakpoints.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,265 @@
+<!DOCTYPE HTML>
+<!--
+	Striped by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+<head>
+    <title>Anirudh Potturi's Portfolio + Blog</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+</head>
+<body class="is-preload">
+
+<!-- Content -->
+<div id="content">
+    <div class="inner">
+
+        <!-- Post -->
+        <!-- Post -->
+        <article class="box post post-excerpt">
+            <header>
+                <h2><a href="https://github.com/AnirudhPotturi/anirudhpotturi.github.io/tree/main/.github/workflows">Weather updates using OpenWeather API </a></h2>
+                <p>Automating updates to a static website using GitHub actions.</p>
+            </header>
+            <div class="info">
+                <span class="date"><span class="month">Oct</span> <span class="day">5</span><span class="year">2023</span></span>
+            </div>
+
+            <a class="image featured"><img src="images/projects/openweather.png" alt="" /></a>
+            <p>
+                I setup a Github actions workflow that calls the OpenWeatherAPI everyday as an automated task. The task script runs on an ubuntu machine utilizing a cURL command. The response from the cURL command is saved into text file which is then committed and pushed into the repository. The workflow setup to build and deploy this webpage is responsible for making sure the website is updated. This website is embedded with a script which pulls the data from the text file and parses it into JSON objects. From this, we extract temperature and humidity and display it on the webpage.
+            </p>
+
+            <pre id="json-data"></pre>
+
+            <h3>
+            Temperature: <span id="temperature"></span>°F
+            Feels Like: <span id="feels-like"></span>°F
+            Humidity: <span id="humidity"></span>%
+            on <span id="todaysDate"></span>
+            </h3>
+
+            <script>
+                // JavaScript code to fetch and display temperature, feels like temperature, and humidity
+                fetch('weather.txt') // Replace 'weather.txt' with the path to your text file
+                    .then(response => response.text())
+                    .then(data => {
+                        try {
+                            const jsonData = JSON.parse(data);
+                            const temperature = jsonData.main.temp;
+                            const feelsLike = jsonData.main.feels_like;
+                            const humidity = jsonData.main.humidity;
+
+                            document.getElementById('temperature').textContent = temperature.toFixed(2);
+                            document.getElementById('feels-like').textContent = feelsLike.toFixed(2);
+                            document.getElementById('humidity').textContent = humidity.toFixed(2);
+                        } catch (error) {
+                            console.error('Error parsing JSON:', error);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error fetching data:', error);
+                    });
+                const currentDate = new Date();
+                const day = currentDate.getDate();
+                const month = currentDate.toLocaleString('default', { month: 'long' }); // Get month name
+                const year = currentDate.getFullYear();
+
+                const dateMonthYearString = `${month} ${day}, ${year}`;
+                document.getElementById('todaysDate').textContent = dateMonthYearString;
+            </script>
+
+        </article>
+
+        <!-- Post -->
+        <article class="box post post-excerpt">
+            <header>
+                <h2><a href="https://github.com/AnirudhPotturi/YouTubeVideoDownloader">YouTube Video and Audio Downloader</a></h2>
+                <p>A python-based tool to download audio and video from YouTube</p>
+            </header>
+            <div class="info">
+                <span class="date"><span class="month">Oct</span> <span class="day">1</span><span class="year">2023</span></span>
+            </div>
+
+            <a class="image featured"><img src="images/projects/pytube.JPG" alt="" /></a>
+            <p>
+                The YouTube downloader application utilizes the Pytube module to fetch and download videos from Youtube. The application provides two options for downloading. The standard option can be used to download videos with the highest resolution that the module can process. Most of the times, this happens to be capped at 720p.
+                The pytube module offers a feature to download videos at higher resolutions like 1080p except with no audio. The second option this application offers allows you to download videos available at the highest resolutions. We download the audio and video files separately and use the Moviepy module to stitch the audio and video files together.
+            </p>
+        </article>
+
+
+        <!-- Post -->
+        <article class="box post post-excerpt">
+            <header>
+                <h2><a>Building a NAS with a ZimaBoard? Like a ZimaNAS?</a></h2>
+                <p>ZimaBoard, a micro home server</p>
+            </header>
+
+            <div class="info">
+                <span class="date"><span class="month">Feb</span> <span class="day">7</span><span class="year">2023</span></span>
+            </div>
+
+            <a class="image featured"><img src="images/projects/zimaboard.jpg" alt="" /></a>
+
+            <p>
+                So I've played around with an old PC that was salvaged and turned into a Network Attached Storage Machine (a NAS). It did the job but was running on some pretty old hardware. It was time to upgrade to something maybe slightly more powerful and most importantly, energy efficient.
+            </p>
+            <p>
+                The ZimaBoard 832 is equipped with an Intel Celeron N3450 processor with a quad core.It comes with 8 Gb RAM and 32 Gb Internal Storage. This should be sufficient to run a lightweight Operating System. The zimaboard is pre-installed with CasaOS, an open-source OS perfect for Home Cloud Applications.
+            </p>
+            <p>
+                After playing around with this device, it was time to start experimenting the features and prepare it to be converted into a NAS. The first thing we did was installing Windows 10 Entrprise LTSC. This is a stripped down version of Windows 10. It does not have bloatware or applications that may change over time. In essence, this OS provides features and functionality that are not meant to change over time.
+                Next, to make sure this system is fault-tolerant in case of a drive failure, we mirrored the OS on two seperate SSDs. The instructions to successfully mirror the OS lacked some details and took sometime to figure out. It was not straight forward doing this because the Disk Management application produces errors that are not very helpful.
+                After quite some tinkering, replacing drives, and fresh installs, I realised that the Recovery partition on the Primary OS drive needs to be deleted. I am not exactly sure why we need to do this but I will be back with an update. I was finally able to mirror after doing so and voila! The OS is mirrored and we're a step closer to building the NAS.
+            </p>
+            <p>
+                The goal of this project is simple. We want to migrate everything on the old TrueNAS machine onto this tiny computer. This will be home to a Plex server with a library of movies, videos, and more.
+            </p>
+
+        </article>
+
+
+        <article class="box post post-excerpt">
+            <header>
+                <h2><a>Unifi Dream Machine Pro</a></h2>
+                <p>A smallscale business router</p>
+            </header>
+
+            <div class="info">
+                <span class="date"><span class="month">Sep</span> <span class="day">15</span><span class="year">2022</span></span>
+            </div>
+
+            <p>A recent fun activity I engaged myself into was playing with a Unifi UDM Pro Router.
+                This is hands down, a nerdy and fun router. It is not your regular router by any means.
+                It is typically meant for small-scale businesses. So it all started with the network going
+                down for 2-3 days. It was challenging to identify what was wrong initially . Eventually,
+                it all came	down to be an issue with a recent firmware upgrade. I figured the Unifi router automatically upgraded to the latest firmware even though auto updates were turned off.</br>
+                It was interesting to observe during testing, that nearly 20% of the CPU and 40% of memory were being used up even when no
+                devices were connected to the router. The router was operating at around
+                45° C at the same time. What was the router doing anyways?
+                Well, I don't have an answer yet. But I look forward to finding out at some point.
+            </p>
+            **Update as of February 2, 2023**
+            <p>So it turns out a USB Hub was causing the issue. In particular, it was a Lenovo Docking Station that brought the network down to it's knees.
+                Although we identified the device causing the issue a few months ago, we did not know the exact reason until today. One possible reason behind this disruption is that these hubs flood the network with some sort of traffic.
+                There still is a part of the problem we are not very sure of. What kind of traffic is this Dock flooding the network with? Although some discussions on the internet pointed that these could be 'Pause frames' that the switch is not handling well.
+                The part that annoys me the most is that the Dock is powered but disconnected from the laptop, it still manages to push "something" into the network, causing a disruption.
+                I realized just how widespread this problem is while reading some of the discussions on forums. However, these discussions seem to be very specific to a community of folks who have a deep understanding of Hardware and Networks.
+            </p>
+
+
+
+            <a class="image main"><img src="images/projects/Unifi.jpg" alt="" /></a>
+            <!--<ul class="actions special">
+                <li><a href="#" class="button large">Full Story</a></li>
+            </ul>-->
+        </article>
+
+        <!-- Pagination -->
+<!--        <div class="pagination">-->
+<!--            &lt;!&ndash;<a href="#" class="button previous">Previous Page</a>&ndash;&gt;-->
+<!--            <div class="pages">-->
+<!--                <a href="#" class="active">1</a>-->
+<!--                <a href="#">2</a>-->
+<!--                <a href="#">3</a>-->
+<!--                <a href="#">4</a>-->
+<!--                <span>&hellip;</span>-->
+<!--                <a href="#">20</a>-->
+<!--            </div>-->
+<!--            <a href="#" class="button next">Next Page</a>-->
+<!--        </div>-->
+
+    </div>
+</div>
+
+<!-- Sidebar -->
+<div id="sidebar">
+
+    <!-- Logo -->
+    <h1 id="logo"><a href="#">ANI</a></h1>
+
+    <!-- Nav -->
+    <nav id="nav">
+        <ul>
+            <li><a href="index.html">About me</a></li>
+            <li class="current"><a href="projects.html">Projects</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="workstuff.html">Work Stuff</a></li>
+            <li><a href="hobbies.html">Hobbies</a></li>
+        </ul>
+        <br>
+        Socials
+        <ul class="icons">
+            <!--
+            <li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+            <li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+            <li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+            -->
+            <li><a href="https://github.com/AnirudhPotturi" target="_blank" class="icon brands fa-github">&nbsp;&nbsp;&nbsp;GitHub</a></li>
+            <li><a href="https://www.linkedin.com/in/anirudh-/" target="_blank" class="icon brands fa-linkedin">&nbsp;&nbsp;&nbsp;LinkedIn</a></li>
+        </ul>
+    </nav>
+
+    <!-- Search -->
+<!--    <section class="box search">-->
+<!--        <form method="post" action="#">-->
+<!--            <input type="text" class="text" name="search" placeholder="Search" />-->
+<!--        </form>-->
+<!--    </section>-->
+
+    <!-- Text -->
+    <section class="box text-style1">
+        <div class="inner">
+            <p>
+                Today is the oldest you have ever been and the youngest you'll ever be again.
+            </p>
+        </div>
+    </section>
+
+<!--    &lt;!&ndash; Recent Posts &ndash;&gt;-->
+<!--    <section class="box recent-posts">-->
+<!--        <header>-->
+<!--            <h2>Recent Posts</h2>-->
+<!--        </header>-->
+<!--        <ul>-->
+<!--            <li><a href="#">Lorem ipsum dolor</a></li>-->
+<!--            <li><a href="#">Feugiat nisl aliquam</a></li>-->
+<!--            <li><a href="#">Sed dolore magna</a></li>-->
+<!--            <li><a href="#">Malesuada commodo</a></li>-->
+<!--            <li><a href="#">Ipsum metus nullam</a></li>-->
+<!--        </ul>-->
+<!--    </section>-->
+
+<!--    &lt;!&ndash; Recent Comments &ndash;&gt;-->
+<!--    <section class="box recent-comments">-->
+<!--        <header>-->
+<!--            <h2>Recent Comments</h2>-->
+<!--        </header>-->
+<!--        <ul>-->
+<!--            <li>case on <a href="#">Lorem ipsum dolor</a></li>-->
+<!--            <li>molly on <a href="#">Sed dolore magna</a></li>-->
+<!--            <li>case on <a href="#">Sed dolore magna</a></li>-->
+<!--        </ul>-->
+<!--    </section>-->
+
+
+    <!-- Copyright -->
+    <ul id="copyright">
+        <li>&copy; Anirudh Potturi/li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+    </ul>
+
+</div>
+
+<!-- Scripts -->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/browser.min.js"></script>
+<script src="assets/js/breakpoints.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
+
+</body>
+</html>
