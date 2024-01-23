@@ -55,37 +55,39 @@
                 <h2><a href="#">Collection of Commands</a></h2>
             </header>
 	    <h3 align="center">-----Kubectl commands with Powershell scripts-----</h3>
-	    <strong>kubectl apply -f path/to/yaml/file/test.yaml</strong>
+	    <strong>kubectl apply -f path/to/yaml/file/test.yaml</strong>        - Apply yaml file and deploy k8s resource.
+        <br>
+        <br>
 	    <p>
-		<strong>Kubernetes cleanup - deleting all configmaps, secrets, jobs and pods</strong>
-		<strong>kubectl delete -n default configmap --all</strong>
-		<strong>kubectl delete -n default secret --all</strong>
-		<strong>kubectl delete -n default jobs --all</strong>
-		<strong>kubectl delete -n default pods --all</strong>
+            <strong><i>Kubernetes cleanup - deleting all configmaps, secrets, jobs and pods</i></strong><br>
+            <strong>kubectl delete -n default configmap --all</strong><br>
+            <strong>kubectl delete -n default secret --all</strong><br>
+            <strong>kubectl delete -n default jobs --all</strong><br>
+            <strong>kubectl delete -n default pods --all</strong><br>
 	    </p>
 	    <br>
-	    <strong>Deleting resources - jobs and pods that start with some prefix/strong>
+	    <strong><i>Deleting resources - jobs and pods that start with some prefix</i></strong>
 	    <p>
-		# List all Jobs and filter by those starting with "imputcs"
-		$jobs = kubectl get jobs --no-headers | Where-Object { $_.Split()[0] -like "imputcs*" }
-		
-		# Loop through the filtered Jobs and delete each one
-		foreach ($job in $jobs) {
-		    $jobName = $job.Split()[0]
-		    Write-Host "Deleting Job: $jobName"
-		    kubectl delete job $jobName
-		}
-		
-		
-		# List all Pods and filter by those starting with "imputcs"
-		$pods = kubectl get pods --no-headers | Where-Object { $_.Split()[0] -like "imputcs*" }
-		
-		# Loop through the filtered Pods and delete each one
-		foreach ($pod in $pods) {
-		    $podName = $pod.Split()[0]
-		    Write-Host "Deleting Pod: $podName"
-		    kubectl delete pod $podName
-		}    
+            # List all Jobs and filter by those starting with "imputcs"<br>
+            $jobs = kubectl get jobs --no-headers | Where-Object { $_.Split()[0] -like "imputcs*" }<br>
+            <br>
+            # Loop through the filtered Jobs and delete each one<br>
+            foreach ($job in $jobs) {<br>
+                &emsp;$jobName = $job.Split()[0]<br>
+                &emsp;Write-Host "Deleting Job: $jobName"<br>
+                &emsp;kubectl delete job $jobName<br>
+            }<br>
+            <br>
+            <br>
+            # List all Pods and filter by those starting with "imputcs"<br>
+            $pods = kubectl get pods --no-headers | Where-Object { $_.Split()[0] -like "imputcs*" }<br>
+            <br>
+            # Loop through the filtered Pods and delete each one<br>
+            foreach ($pod in $pods) {<br>
+                &emsp;$podName = $pod.Split()[0]<br>
+                &emsp; Write-Host "Deleting Pod: $podName"<br>
+                &emsp;kubectl delete pod $podName<br>
+            }  <br>
 	    </p>
 		    
             <h3 align="center">-----Linux-----</h3>
